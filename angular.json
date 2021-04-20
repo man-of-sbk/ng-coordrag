@@ -3,5 +3,48 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ng-coordrag": {
+      "projectType": "library",
+      "root": "projects/ng-coordrag",
+      "sourceRoot": "projects/ng-coordrag/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-coordrag/tsconfig.lib.json",
+            "project": "projects/ng-coordrag/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-coordrag/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-coordrag/src/test.ts",
+            "tsConfig": "projects/ng-coordrag/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-coordrag/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-coordrag/tsconfig.lib.json",
+              "projects/ng-coordrag/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": "8ac7f850-f93f-4fd3-9732-da36b3eefa6b"
+  },
+  "defaultProject": "ng-coordrag"
 }
